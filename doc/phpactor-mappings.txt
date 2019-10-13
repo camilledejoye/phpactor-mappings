@@ -1,0 +1,139 @@
+*phpactor-mappings.txt*	Default mappings for Phpactor
+*phpactor-mappings*
+
+
+==============================================================================
+CONTENTS                                                  *phpactor-mappings-contents*
+
+    1.Intro.........................................|phpactor-mappings-intro|
+    2.Overwiew......................................|phpactor-mappings-overview|
+    3.Configuration.................................|phpactor-mappings-configuration|
+    4.Mappings List.................................|phpactor-mappings-list|
+    5.Custom Mappings...............................|phpactor-mappings-custom|
+
+
+==============================================================================
+1. Intro                                                     *phpactor-mappings-intro*
+
+Phpactor Mappings aimed to provide mappings for Phpactor which are in respect
+with the Vim mentality.
+
+I strongly invite you to gave your feedback on it and your ideas for new/better
+mappings.
+The goal beeing able to produce sensible mappings for Phpactor.
+
+==============================================================================
+2. Overview                                               *phpactor-mappings-overview*
+
+Phpactor Mappings will provide three kinds of mappings:
+    * Native: they come with the plugin no matter what
+    * Overlapping: they overlap with some vim default mappings and can be desactivated
+    * Custom: Mappings that you can easly add on your side
+
+`Natives mappings`                                          *phpactor-mappings-native*
+
+They can't be disabled, if you don't want to use them I suggest you to not use
+this pluggin and instead defines your own mappings manualy.
+
+`Overlapping Mappings`                                  *phpactor-mappings-overlapping*
+
+They overlap with some Vim default functionalities and can be desactivated.
+The overlapping mappings are there for conviniency, for example:
+    `<C-]>` Replace the "Jump to tag" Vim functionality by the "Go To" Phpactor
+    functionality
+    `<cc>` Will remove the "replace line" Vim functionality by the "Extract
+    constant" Phpactor functionality
+
+In the first example the goal is the keep the same Vim experience, I think it
+makes a lot of sense and avoid to have to remember another mapping. Since the
+mappings are defined on a buffer level you can still use it to jump to tags in
+the documentation for example.
+
+In the second example the goal is to use the `c` operator for mappings making
+changes into the buffer and the second `c` stands for `constant`. It removes a
+Vim functionality but I think it's not to anoying since we can use `S` to get a
+similar functionality.
+
+`Custom Mappings`
+
+They are the mappings you can define by yourself to extend those provided with
+this plugin.
+
+==============================================================================
+3. Configuration                                      *phpactor-mappings-configuration*
+
+                                               *'g:phpactorActivateOverlapingMappings'*
+
+Type: boolean
+Default: v:false
+Defines if the overlapping mappings should be used.
+You activate them by adding to you configuration: >
+    let g:phpactorActivateOverlapingMappings = v:true
+<
+
+                                                           *'g:phpactorCustomMappings'*
+
+Type: list
+Default: []
+Defines a list of custom mappings to add.
+You can defined it on a per buffer basis with: >
+    let g:phpactorCustomMappings = [
+      \ ['<Leader>pp', '<Plug>phpactorContextMenu', 'n'],
+      \ ['<Leader>pn', '<Plug>phpactorNavigate', 'n'],
+      \ ['<Leader>pt', '<Plug>phpactorTransform', 'n'],
+    \ ]
+>
+
+
+==============================================================================
+4. Mappings List                                               *phpactor-mappings-list*
+
+There is the list of all the mappings you can plug on:
+
+Mapping                            | Mode(s)
+--------------------------------------------
+<Plug>phpactorExtractExpression    | nx
+<Plug>phpactorExtractConstant      | n
+<Plug>phpactorExtractMethod        | nx
+<Plug>phpactorImportUseStatement   | n
+<Plug>phpactorGotoDefinition       | n
+<Plug>phpactorGotoDefinitionVsplit | n
+<Plug>phpactorGotoDefinitionHsplit | n
+<Plug>phpactorGotoDefinitionTab    | n
+<Plug>phpactorContextMenu          | n
+<Plug>phpactorNavigate             | n
+<Plug>phpactorTransform            | n
+<Plug>phpactorClassExpand          | n
+<Plug>phpactorHover                | n
+
+There is the list of providing mappings:
+
+Mapping                            | Keys
+--------------------------------------------
+<Plug>phpactorExtractExpression    | <cv>
+<Plug>phpactorExtractConstant      | <cc>
+<Plug>phpactorExtractMethod        | <cm> 
+<Plug>phpactorImportUseStatement   | <yu> 
+<Plug>phpactorGotoDefinition       | <C-]> 
+<Plug>phpactorGotoDefinitionVsplit | <C-w>] & <C-w><C-]> 
+<Plug>phpactorGotoDefinitionHsplit |
+<Plug>phpactorGotoDefinitionTab    |
+<Plug>phpactorContextMenu          |
+<Plug>phpactorNavigate             |
+<Plug>phpactorTransform            |
+<Plug>phpactorClassExpand          |
+<Plug>phpactorHover                |
+
+==============================================================================
+5. Custom Mappings                                           *phpactor-mappings-custom*
+
+
+You can provide your own mappings easly: >
+    let g:phpactorCustomMappings = [
+      \ ['<Leader>pp', '<Plug>phpactorContextMenu', 'n'],
+      \ ['<Leader>pn', '<Plug>phpactorNavigate', 'n'],
+      \ ['<Leader>pt', '<Plug>phpactorTransform', 'n'],
+    \ ]
+<
+
+ vim:tw=78:sw=4:ft=help:norl:
