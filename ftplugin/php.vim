@@ -4,6 +4,8 @@
 "
 nnoremap <buffer> <silent> <Plug>phpactorExtractExpression
     \ :set opfunc=phpactor#ExtractExpression<CR>g@
+nnoremap <buffer> <silent> <Plug>phpactorExtractExpressionLine
+    \ :set opfunc=phpactor#ExtractExpression<CR>^g@$
 xnoremap <buffer> <silent> <Plug>phpactorExtractExpression
     \ :<C-U>call phpactor#ExtractExpression(visualmode())<CR>
 
@@ -12,6 +14,8 @@ nnoremap <buffer> <silent> <Plug>phpactorExtractConstant
 
 nnoremap <buffer> <silent> <Plug>phpactorExtractMethod
     \ :set opfunc=phpactor#ExtractMethod<CR>g@
+nnoremap <buffer> <silent> <Plug>phpactorExtractMethodLine
+    \ :set opfunc=phpactor#ExtractMethod<CR>^g@$
 xnoremap <buffer> <silent> <Plug>phpactorExtractMethod
     \ :<C-U>call phpactor#ExtractMethod(visualmode())<CR>
 
@@ -45,9 +49,11 @@ nnoremap <buffer> <silent> <Plug>phpactorHover
 
 " Mnemotechnic "Change into Variable"
 call phpactor#mappings#map('cv', '<Plug>phpactorExtractExpression', 'n')
+call phpactor#mappings#map('cvv', '<Plug>phpactorExtractExpressionLine', 'n')
 
 " Mnemotechnic "Change into Method"
 call phpactor#mappings#map('cm', '<Plug>phpactorExtractMethod', 'n')
+call phpactor#mappings#map('cmm', '<Plug>phpactorExtractMethodLine', 'n')
 
 call phpactor#mappings#map('yu', '<Plug>phpactorImportUseStatement', 'n')
 
